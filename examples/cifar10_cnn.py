@@ -61,7 +61,7 @@ model.add(Activation('softmax'))
 
 # Let's train the model using RMSprop
 model.compile(loss='categorical_crossentropy',
-              optimizer='rmsprop',
+              optimizer='adam',
               metrics=['accuracy'])
 
 X_train = X_train.astype('float32')
@@ -101,3 +101,4 @@ else:
                         samples_per_epoch=X_train.shape[0],
                         nb_epoch=nb_epoch,
                         validation_data=(X_test, Y_test))
+    model.save('cifar10.h5')
